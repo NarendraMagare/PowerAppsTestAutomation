@@ -23,6 +23,7 @@ namespace Microsoft.PowerApps.TestAutomation.Browser
                     var chromeService = ChromeDriverService.CreateDefaultService(options.DriversPath);
                     chromeService.HideCommandPromptWindow = options.HideDiagnosticWindow;
                     driver = new ChromeDriver(chromeService, options.ToChrome());
+                    driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(240));//Increased timeout
                     break;
                 case BrowserType.Firefox:
                     var ffService = FirefoxDriverService.CreateDefaultService(options.DriversPath);
